@@ -5,7 +5,7 @@ Nagios plugin for memory usages of linux based hosts
 The plugin written in bash and works under NRPE.
 
  Steps to install Memory usage Plugin
- 1) Git cloen the repo
+ 1) Git clone the repo
  2) Copy file to Your Nagios libex direcotory.
  3) Change the permission to 755
  4) Define the command in the nrpe.cfg
