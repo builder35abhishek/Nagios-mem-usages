@@ -1,4 +1,4 @@
-# memusages
+# Nagios Memory Usage Plugin
 Nagios plugin for memory usages of linux based hosts
 
 
