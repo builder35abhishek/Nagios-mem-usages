@@ -12,5 +12,7 @@ if memused >= 80 and memused <= 89:
         sys.exit(1)
 elif memused >= 90:
         print memused, "% memory used"
+        sys.exit(2)
 else:
         print memused, "% memory used"
+        sys.exit(0)
