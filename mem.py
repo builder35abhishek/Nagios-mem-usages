@@ -1,5 +1,5 @@
 import os
-
+import sys
 command = os.popen('free')
 s=(command.read())
 d = s.split()
