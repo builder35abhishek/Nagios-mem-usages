@@ -8,7 +8,7 @@ The plugin written in bash and works under NRPE.
  1) Git clone the repo
  2) Copy file to Your Nagios libex direcotory.
  3) Change the permission to 755
- 4) Define the command in the nrpe.cfg
+ 4) Define the command in the nrpe.cfg only if required.
  
  
  The plugin also genertaes perforance data, which can be used to draw PNP graphs
