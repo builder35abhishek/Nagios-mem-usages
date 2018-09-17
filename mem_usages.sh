@@ -1,8 +1,8 @@
 #!/bin/bash
 # Script is created by Abhishek Gharat abhishek@balasai.com on 08/09/2018
-# Script monitors the Memory usgae of Linux hosts and generate the NRPE status code as output. 
-#Versio 1.1 # Now script takes input from NRPE for Warning and Critical
-#
+# Script monitors the Memory usgae of Linux hosts and generate the NRPE status code as output.
+# At the time of creation it is 80% memory usage as warning and 90% memory usgae as Critical.
+# You can modify the values by just replacing values in if else. Script dosent support the external arguments.
 
 if [ "$1" = "-w" ] && [ "$2" -gt "0" ] && [ "$3" = "-c" ] && [ "$4" -gt "0" ]; then
 
@@ -17,10 +17,10 @@ memfree_m=$(free -h | awk 'NR==2 {print $4}')
 
 mem=$((($memused*100)/$memtotal))
 
-        if ((90<=$mem)); then
+        if [ "$mem" -ge "$4" ]; then
                 echo "Memory CRITICAL Total: $memTotal_m - Used: $memUsed_m  -$mem% used!|TOTAL=$memTotal_m;USED=$memUsed_m;FREE=$memfree_m"
                 $(exit 2)
-        elif ((80<=$mem && $mem<=89)); then
+        elif [ "$mem" -ge "$2" ]; then
                 echo "Memory WARNING Total: $memTotal_m  - Used: $memUsed_m  - $mem% used!|TOTAL=$memTotal_m;USED=$memUsed_m;FREE=$memfree_m"
                 $(exit 1)
         else
@@ -31,15 +31,13 @@ exit
 
 
 else
-        echo "check_mem v1.2"
+        echo "check_mem v1.1"
         echo ""
         echo "Usage:"
         echo "check_mem.sh -w <warnlevel> -c <critlevel>"
         echo ""
         echo "warnlevel and critlevel is percentage value without %"
         echo ""
-        echo "2018 Abhishek Gharat (abhishek@balasai.com)"
+        echo "Copyright (C) 2018 Abhishek Gharat (abhishek@balasai.com)"
         exit
 fi
-
-
